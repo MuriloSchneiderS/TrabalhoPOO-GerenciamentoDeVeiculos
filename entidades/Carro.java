@@ -26,7 +26,9 @@ public class Carro extends Veiculo {
     }
     @Override
     public void exibirDetalhes() {
-        System.out.println("Tipo: Carro"+"\n Capacidade do Tanque: "+capacidadeTanque+"L.\n Tem ar-condicionado: " + (temArCondicionado ? "Sim. " : "Não. "));
+        System.out.println("Tipo: Carro"+
+        "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km");
+        System.out.println(" Capacidade do Tanque: "+this.capacidadeTanque+"L.\n Tem ar-condicionado: " + (this.temArCondicionado ? "Sim. " : "Não. "));
     }
 
 }

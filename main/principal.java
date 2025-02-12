@@ -89,12 +89,11 @@ public class principal {
                         System.out.println("Nenhum veículo cadastrado.");
                     } else {
                         System.out.println(frota.size()+" Veículos cadastrados, sendo eles "+porcentagensFrota(frota));
+                        int c=1;
                         for (Veiculo veiculo : frota) {
-                            System.out.println("\nMarca: " + veiculo.getMarca());
-                            System.out.println("Modelo: " + veiculo.getModelo());
-                            System.out.println("Ano: " + veiculo.getAno());
-                            System.out.println("Quilometragem: " + veiculo.getQuilometragem());
+                            System.out.print(c+"º: ");
                             veiculo.exibirDetalhes();
+                            c++;
                         }
                     }
                     break;
@@ -123,8 +122,8 @@ public class principal {
                 motos++;
             }
         }*/
-        return "Caminhões: "+caminhoes+" ("+(caminhoes/frota.size()*100)+"%), "+
-        "Carros: "+carros+" ("+(carros/frota.size()*100)+"%), "+
-        "Motos: "+motos+" ("+(motos/frota.size()*100)+"%)";
+        return "Caminhões: "+(int)caminhoes+" ("+String.format("%.2f", caminhoes/frota.size()*100 )+"%), "+
+        "Carros: "+(int)carros+" ("+String.format("%.2f", carros/frota.size()*100 )+"%), "+
+        "Motos: "+(int)motos+" ("+String.format("%.2f", motos/frota.size()*100 )+"%)\n";
     }
 }

@@ -35,8 +35,9 @@ public class Caminhao extends Veiculo {
     
     @Override
     public void exibirDetalhes() {
-        System.out.println("Tipo: Caminhão");
-        System.out.println("Capacidade de carga: " + capacidadeCarga + " toneladas");
+        System.out.println("Tipo: Caminhão"+
+        "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km");
+        System.out.println(" Capacidade de carga: " + this.capacidadeCarga + "T");
     }
 
     
