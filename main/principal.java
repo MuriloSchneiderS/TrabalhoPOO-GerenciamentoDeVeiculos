@@ -88,6 +88,7 @@ public class principal {
                     if (frota.isEmpty()) {
                         System.out.println("Nenhum veículo cadastrado.");
                     } else {
+                        System.out.println(frota.size()+" Veículos cadastrados, sendo eles "+porcentagensFrota(frota));
                         for (Veiculo veiculo : frota) {
                             System.out.println("\nMarca: " + veiculo.getMarca());
                             System.out.println("Modelo: " + veiculo.getModelo());
@@ -97,7 +98,6 @@ public class principal {
                         }
                     }
                     break;
-
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -108,5 +108,23 @@ public class principal {
         } while (opcao != 0);
 
         ler.close();
+    }
+    public static String porcentagensFrota(List<Veiculo> frota){
+        double caminhoes = frota.stream().filter(quant-> quant instanceof Caminhao).count();
+        double carros = frota.stream().filter(quant-> quant instanceof Carro).count();
+        double motos = frota.stream().filter(quant-> quant instanceof Moto).count();
+        /*double caminhoes=0, carros=0, motos=0;
+        for(Object v: frota){
+            if(v instanceof Caminhao){
+                caminhoes++;
+            }else if(v instanceof Carro){
+                carros++;
+            }else if(v instanceof Moto){
+                motos++;
+            }
+        }*/
+        return "Caminhões: "+caminhoes+" ("+(caminhoes/frota.size()*100)+"%), "+
+        "Carros: "+carros+" ("+(carros/frota.size()*100)+"%), "+
+        "Motos: "+motos+" ("+(motos/frota.size()*100)+"%)";
     }
 }

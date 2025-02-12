@@ -24,11 +24,9 @@ public class Carro extends Veiculo {
             System.out.println("Distância inválida.");
         }
     }
-
     @Override
     public void exibirDetalhes() {
-        System.out.println("Tipo: Carro");
-        System.out.println("Tem ar-condicionado: " + (temArCondicionado ? "Sim" : "Não"));
+        System.out.println("Tipo: Carro"+"\n Capacidade do Tanque: "+capacidadeTanque+"L.\n Tem ar-condicionado: " + (temArCondicionado ? "Sim. " : "Não. "));
     }
 
 }
