@@ -1,10 +1,13 @@
 package entidades;
 
+import java.util.Scanner;
+
 public abstract class Veiculo {
+    protected Scanner input = new Scanner(System.in);
     private String marca;
     private String modelo;
     private int ano;
-    private double quilometragem;
+    protected double quilometragem;
     
     public Veiculo(String marca, String modelo, int ano, double quilometragem) {
         this.marca = marca;
@@ -14,18 +17,11 @@ public abstract class Veiculo {
     }
     
     public abstract double calcularConsumo();
-
-    public void cadastraViagem(double km) {
-        if (km > 0) {
-            this.quilometragem += km;
-        } else {
-            System.out.println("Distância inválida.");
-        }
-    }
-    
+    public abstract void cadastraViagem(double km);
     public void mostrar(){
         System.out.println("Veículo cadastrado: " + marca + " " + modelo);
     }
+    public abstract void exibirDetalhes();
     
     public String getMarca() {
         return marca;
@@ -43,6 +39,5 @@ public abstract class Veiculo {
         return quilometragem;
     }
 
-    public abstract void exibirDetalhes();
     
 }

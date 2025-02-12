@@ -36,8 +36,10 @@ public class principal {
                     ler.nextLine();
                     System.out.println("Tem ar-condicionado? (true/false): ");
                     boolean temArCondicionado = ler.nextBoolean();
+                    System.out.println("Qual a capacidade do tanque em Litros?");
+                    double capacidadeTanque = ler.nextDouble();
                     ler.nextLine();
-                    Carro carro = new Carro(marca, modelo, ano, quilometragem, temArCondicionado);
+                    Carro carro = new Carro(marca, modelo, ano, quilometragem, temArCondicionado, capacidadeTanque);
                     frota.add(carro);
                     System.out.println("Carro cadastrado com sucesso!");
                     break;

@@ -12,11 +12,32 @@ public class Caminhao extends Veiculo {
     public double calcularConsumo() {
         return 5.0;
     }
+    @Override
+    public void cadastraViagem(double km) {
+        double carga;
+        do{
+            System.out.print("Quanta carga o caminhão levará? Kg");
+            carga = input.nextDouble();
+            if(carga>capacidadeCarga){
+                System.out.println("A capacidade do caminhão é apenas "+capacidadeCarga+". Insira uma carga menor.");
+            }else{
+                capacidadeCarga -= carga;
+                if (km > 0) {
+                    this.quilometragem += km;
+                    System.out.println("Descarregando carga...");
+                    capacidadeCarga += carga;
+                } else {
+                    System.out.println("Distância inválida.");
+                }
+            }
+        }while(carga>capacidadeCarga);
+    }
     
     @Override
     public void exibirDetalhes() {
         System.out.println("Tipo: Caminhão");
         System.out.println("Capacidade de carga: " + capacidadeCarga + " toneladas");
     }
+
     
 }
