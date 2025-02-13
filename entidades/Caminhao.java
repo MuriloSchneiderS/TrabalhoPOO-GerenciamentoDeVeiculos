@@ -18,7 +18,7 @@ public class Caminhao extends Veiculo {
         do{
             System.out.print("Quanta carga o caminhão levará? Kg");
             double pacote = input.nextDouble();
-            if(carga>capacidadeCarga){
+            if(pacote>capacidadeCarga){
                 System.out.println("A capacidade do caminhão é apenas "+capacidadeCarga+". Insira uma carga menor.");
             }else{
                 if (km > 0) {
