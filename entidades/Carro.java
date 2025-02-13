@@ -32,7 +32,7 @@ public class Carro extends Veiculo {
     }
     @Override
     public void exibirDetalhes() {
-        System.out.println("Tipo: Carro"+
+        System.out.println("Carro"+
         "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km"+"\n Total de combustivel abastecido: "+this.getTotalCombustivel()+"L");
         System.out.println(" Capacidade do Tanque: "+this.capacidadeTanque+"L.\n Tem ar-condicionado: " + (this.temArCondicionado ? "Sim. " : "Não. "));
     }

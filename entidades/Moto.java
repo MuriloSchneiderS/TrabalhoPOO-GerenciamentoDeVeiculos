@@ -29,7 +29,7 @@ public class Moto extends Veiculo {
     }
     @Override
     public void exibirDetalhes() {
-        System.out.println("Tipo: Moto"+
+        System.out.println("Moto"+
         "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km"+"\n Total de combustivel abastecido: "+this.getTotalCombustivel()+"L");
         System.out.println(" Cilindradas: " + cilindradas);
     }
