@@ -26,63 +26,87 @@ public class principal {
                 case 1:
                     System.out.println("Marca do carro: ");
                     String marca = ler.nextLine();
+                    
                     System.out.println("Modelo do carro: ");
                     String modelo = ler.nextLine();
+                    
                     System.out.println("Ano do carro: ");
                     int ano = ler.nextInt();
                     ler.nextLine();
+                    
                     System.out.println("Quilometragem do carro: ");
                     double quilometragem = ler.nextDouble();
                     ler.nextLine();
+                    
+                    System.out.println("Quantos litros de combustivel ja forma abastecidos no tanque do veiculo?");
+                    double totalCombustivel = ler.nextDouble();
+                    ler.nextLine();
+                    
                     System.out.println("Tem ar-condicionado? (true/false): ");
                     boolean temArCondicionado = ler.nextBoolean();
+                    
                     System.out.println("Qual a capacidade do tanque em Litros?");
                     double capacidadeTanque = ler.nextDouble();
                     ler.nextLine();
-                    Carro carro = new Carro(marca, modelo, ano, quilometragem, temArCondicionado, capacidadeTanque);
+                    
+                    Carro carro = new Carro(marca, modelo, ano, quilometragem, totalCombustivel, temArCondicionado, capacidadeTanque);
                     frota.add(carro);
                     System.out.println("Carro cadastrado com sucesso!");
                     break;
-
                 case 2:
                     System.out.println("Marca da moto: ");
                     marca = ler.nextLine();
+                    
                     System.out.println("Modelo da moto: ");
                     modelo = ler.nextLine();
+                    
                     System.out.println("Ano da moto: ");
                     ano = ler.nextInt();
                     ler.nextLine();
+                    
                     System.out.println("Quilometragem da moto: ");
                     quilometragem = ler.nextDouble();
                     ler.nextLine();
+                    
+                    System.out.println("Este tanque ja foi abastecido de quantos litros de combustivel?");
+                    totalCombustivel=ler.nextDouble();
+                    ler.nextLine();
+                    
                     System.out.println("Cilindradas da moto: ");
                     int cilindradas = ler.nextInt();
                     ler.nextLine();
-                    Moto moto = new Moto(marca, modelo, ano, quilometragem, cilindradas);
+                    
+                    Moto moto = new Moto(marca, modelo, ano, quilometragem, totalCombustivel, cilindradas);
                     frota.add(moto);
                     System.out.println("Moto cadastrada com sucesso!");
                     break;
-
                 case 3:
                     System.out.println("Marca do caminhão: ");
                     marca = ler.nextLine();
+                    
                     System.out.println("Modelo do caminhão: ");
                     modelo = ler.nextLine();
+                    
                     System.out.println("Ano do caminhão: ");
                     ano = ler.nextInt();
                     ler.nextLine();
+                    
                     System.out.println("Quilometragem do caminhão: ");
                     quilometragem = ler.nextDouble();
                     ler.nextLine();
+
+                    System.out.println("Este tanque ja foi abastecido de quantos litros de combustivel?");
+                    totalCombustivel=ler.nextDouble();
+                    ler.nextLine();
+
                     System.out.println("Capacidade de carga (toneladas): ");
                     double capacidadeCarga = ler.nextDouble();
                     ler.nextLine();
-
-                    Caminhao caminhao = new Caminhao(marca, modelo, ano, quilometragem, capacidadeCarga);
+                    
+                    Caminhao caminhao = new Caminhao(marca, modelo, ano, quilometragem, totalCombustivel, capacidadeCarga);
                     frota.add(caminhao);
                     System.out.println("Caminhão cadastrado com sucesso!");
                     break;
-
                 case 4:
                     System.out.println("\n--- Frota de Veículos ---");
                     if (frota.isEmpty()) {
@@ -90,11 +114,39 @@ public class principal {
                     } else {
                         System.out.println(frota.size()+" Veículos cadastrados, sendo eles "+porcentagensFrota(frota));
                         int c=1;
+                        Veiculo maiorQuilometragem=frota.get(0);
+                        Veiculo maisNovo=frota.get(0);
+                        Veiculo maisAntigo=frota.get(0);
+                        Veiculo maiorConsumo=frota.get(0);
+                        Veiculo menorConsumo=frota.get(0);
+
                         for (Veiculo veiculo : frota) {
                             System.out.print(c+"º: ");
                             veiculo.exibirDetalhes();
                             c++;
+                            if(veiculo.getQuilometragem()>maiorQuilometragem.getQuilometragem())
+                                maiorQuilometragem = veiculo;
+                            if(veiculo.getAno()>maisNovo.getAno())
+                                maisNovo = veiculo;
+                            if(veiculo.getAno()<maisAntigo.getAno())
+                                maisAntigo = veiculo;
+                            if(veiculo.calcularConsumo()>maiorConsumo.calcularConsumo())
+                                maiorConsumo = veiculo;
+                            if(veiculo.calcularConsumo()<maiorConsumo.calcularConsumo())
+                                menorConsumo = veiculo;
+                            
                         }
+                        System.out.println("--- dados adicionais da frota ---");
+                        System.out.print("Veículo com maior quilometragem: ");
+                        maiorQuilometragem.mostrar();
+                        System.out.print("Veículo mais novo: ");
+                        maisNovo.mostrar();
+                        System.out.print("Veículo mais antigo: ");
+                        maisAntigo.mostrar();
+                        System.out.print("Veículo com maior consumo de combustível: ");
+                        maiorConsumo.mostrar();;
+                        System.out.print("Veículo com menor consumo de combustível: ");
+                        menorConsumo.mostrar();
                     }
                     break;
                 case 0:

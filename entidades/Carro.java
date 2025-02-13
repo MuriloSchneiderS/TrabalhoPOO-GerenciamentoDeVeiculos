@@ -3,23 +3,29 @@ package entidades;
 public class Carro extends Veiculo {
     private boolean temArCondicionado;
     private double capacidadeTanque;
+    private int passageiros=1;
 
-    public Carro(String marca, String modelo, int ano, double quilometragem, boolean temArCondicionado, double capacidadeTanque) {
-        super(marca, modelo, ano, quilometragem);
+    public Carro(String marca, String modelo, int ano, double quilometragem, double totalCombustivel, boolean temArCondicionado, double capacidadeTanque) {
+        super(marca, modelo, ano, quilometragem, totalCombustivel);
         this.temArCondicionado = temArCondicionado;
         this.capacidadeTanque = capacidadeTanque;
     }
 
     @Override
     public double calcularConsumo() {
-        return 10.0;
+        return quilometragem/totalCombustivel*(passageiros * 0.1);
     }
     @Override
     public void cadastraViagem(double km) {
-        System.out.println("Serão necessários "+(12.5*km)+"L de gasolina.");//12.5km/l = média de consumo de um carro
+        receberPassageiros(1);
+        System.out.print("Quantos passageiros irão junto?(sem contar o motorista) ");
+        receberPassageiros(input.nextInt());
+        System.out.println("Serão necessários "+calcularConsumo()+"L de gasolina.");
         if (km > 0) {
             this.quilometragem += km;
+            this.totalCombustivel += km*calcularConsumo();
             System.out.println("Viagem realizada.");
+            desembarcarPassageiros(passageiros);
         } else {
             System.out.println("Distância inválida.");
         }
@@ -27,8 +33,14 @@ public class Carro extends Veiculo {
     @Override
     public void exibirDetalhes() {
         System.out.println("Tipo: Carro"+
-        "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km");
+        "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km"+"\n Total de combustivel abastecido: "+this.getTotalCombustivel()+"L");
         System.out.println(" Capacidade do Tanque: "+this.capacidadeTanque+"L.\n Tem ar-condicionado: " + (this.temArCondicionado ? "Sim. " : "Não. "));
     }
 
+    public void receberPassageiros(int quant){
+        passageiros+=quant;
+    }
+    public void desembarcarPassageiros(int quant){
+        passageiros-=quant;
+    }
 }
