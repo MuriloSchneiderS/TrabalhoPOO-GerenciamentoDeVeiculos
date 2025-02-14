@@ -47,7 +47,7 @@ public class principal {
                 }
             }catch(Exception numberFormatException){
                 System.out.println("Tipo de dado inválido inserido."+"\nReiniciando...\n");
-                opcao=10;
+                opcao=-10;
                 ler.next();
             }
         }while(opcao!=0);
@@ -94,7 +94,7 @@ public class principal {
                 }
             }catch(Exception numberFormatException){
                 System.out.println("Tipo de dado inválido inserido. "+"Reiniciando menu...\n");
-                opcao=10;
+                opcao=-10;
                 ler.next();
             }
         } while (opcao != 0);

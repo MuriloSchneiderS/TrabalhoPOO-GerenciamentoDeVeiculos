@@ -15,10 +15,10 @@ public class Frota {
     public void cadastrarCarro() {
         try {
             System.out.println("Marca do carro: ");
-            String marca = ler.nextLine();
+            String marca = ler.next();
 
             System.out.println("Modelo do carro: ");
-            String modelo = ler.nextLine();
+            String modelo = ler.next();
 
             System.out.println("Ano do carro: ");
             int ano = ler.nextInt();
@@ -53,10 +53,10 @@ public class Frota {
     public void cadastrarMoto() {
         try {
             System.out.println("Marca da moto: ");
-            String marca = ler.nextLine();
+            String marca = ler.next();
 
             System.out.println("Modelo da moto: ");
-            String modelo = ler.nextLine();
+            String modelo = ler.next();
 
             System.out.println("Ano da moto: ");
             int ano = ler.nextInt();
@@ -86,10 +86,10 @@ public class Frota {
     public void cadastrarCaminhao() {
         try {
             System.out.println("Marca do caminhão: ");
-            String marca = ler.nextLine();
+            String marca = ler.next();
 
             System.out.println("Modelo do caminhão: ");
-            String modelo = ler.nextLine();
+            String modelo = ler.next();
 
             System.out.println("Ano do caminhão: ");
             int ano = ler.nextInt();
@@ -117,7 +117,7 @@ public class Frota {
 
     // 4. Consultar a frota
     public void consultarFrota() {
-        System.out.println("\n--- Frota de Veículos ---");
+        System.out.println("\n### Frota de Veículos ###");
         if (frota.isEmpty()) {
             System.out.println("Nenhum veículo cadastrado.");
         } else {
@@ -158,7 +158,7 @@ public class Frota {
                 if (veiculo.calcularConsumo() < maiorConsumo.calcularConsumo())
                     menorConsumo = veiculo;
             }
-            System.out.println("--- dados adicionais da frota ---");
+            System.out.println("\n## dados adicionais da frota ##");
             System.out.print("Veículo com maior quilometragem: ");
             maiorQuilometragem.mostrar();
             System.out.print("Veículo mais novo: ");
@@ -167,7 +167,6 @@ public class Frota {
             maisAntigo.mostrar();
             System.out.print("Veículo com maior consumo de combustível: ");
             maiorConsumo.mostrar();
-            ;
             System.out.print("Veículo com menor consumo de combustível: ");
             menorConsumo.mostrar();
         }
@@ -207,7 +206,7 @@ public class Frota {
     public static void listarPorData(List<Veiculo> frota) {
         int c = 1;
         for (Veiculo veiculo : frota) {
-            System.out.println("--- Ordem: Data de cadastramento ---");
+            System.out.println("\n## Ordem: Data de cadastramento ##");
             System.out.print(c + "º: ");
             veiculo.exibirDetalhes();
             c++;
@@ -215,7 +214,7 @@ public class Frota {
     }
 
     public static void listarPorTipo(List<Veiculo> frota) {
-        System.out.println("--- Ordem: Tipo de veículo ---");
+        System.out.println("\n## Ordem: Tipo de veículo ##");
         for (Veiculo veiculo : frota) {
             if (veiculo.getClass().getSimpleName().startsWith("Caminhao"))
                 veiculo.exibirDetalhes();
@@ -231,7 +230,7 @@ public class Frota {
     }
 
     public static void listarPorAno(List<Veiculo> frota) {
-        System.out.println("--- Ordem: Ano do veículo ---");
+        System.out.println("\n## Ordem: Ano do veículo ##");
         // Compara cada um dos itens da lista e os ordena por ano, por fim exibe os
         // detalhes de cada veiculo na ordem
         frota.stream().sorted((v1, v2) -> Integer.compare(v1.getAno(), v2.getAno())).forEach(v -> v.exibirDetalhes());
