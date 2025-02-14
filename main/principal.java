@@ -30,11 +30,11 @@ public class principal {
                 switch (opcao) {
                     case 1://Cadastrar Carro
                         System.out.println("Marca do carro: ");
-                        String marca = ler.nextLine();
-                        
+                        String marca = ler.next();
+                                                
                         System.out.println("Modelo do carro: ");
-                        String modelo = ler.nextLine();
-                        
+                        String modelo = ler.next();
+                                                
                         System.out.println("Ano do carro: ");
                         int ano = ler.nextInt();
                         ler.nextLine();
@@ -61,11 +61,11 @@ public class principal {
                         break;
                     case 2://Cadastrar Moto
                         System.out.println("Marca da moto: ");
-                        marca = ler.nextLine();
-                        
+                        marca = ler.next();
+                                                
                         System.out.println("Modelo da moto: ");
-                        modelo = ler.nextLine();
-                        
+                        modelo = ler.next();
+                                                
                         System.out.println("Ano da moto: ");
                         ano = ler.nextInt();
                         ler.nextLine();
@@ -88,11 +88,11 @@ public class principal {
                         break;
                     case 3://Cadastrar Caminhão
                         System.out.println("Marca do caminhão: ");
-                        marca = ler.nextLine();
-                        
+                        marca = ler.next();
+                                                
                         System.out.println("Modelo do caminhão: ");
-                        modelo = ler.nextLine();
-                        
+                        modelo = ler.next();
+                                                
                         System.out.println("Ano do caminhão: ");
                         ano = ler.nextInt();
                         ler.nextLine();
@@ -114,7 +114,7 @@ public class principal {
                         System.out.println("Caminhão cadastrado com sucesso!");
                         break;
                     case 4://Consultar Frota
-                        System.out.println("\n--- Frota de Veículos ---");
+                        System.out.println("\n## Frota de Veículos ##");
                         if (frota.isEmpty()) {
                             System.out.println("Nenhum veículo cadastrado.");
                         } else {
@@ -123,7 +123,7 @@ public class principal {
                             System.out.println("--- Ordenar por: ---");
                             System.out.println("1: Data"+
                             "\n2: Tipo"+
-                            "\n3: Mais novo");
+                            "\n3: Ano");
                             int ordem = ler.nextInt();
                             ler.nextLine();
                             switch(ordem){
@@ -155,7 +155,7 @@ public class principal {
                                 if(veiculo.calcularConsumo()<maiorConsumo.calcularConsumo())
                                     menorConsumo = veiculo;
                             }
-                            System.out.println("--- dados adicionais da frota ---");
+                            System.out.println("\n## dados adicionais da frota ##");
                             System.out.print("Veículo com maior quilometragem: ");
                             maiorQuilometragem.mostrar();
                             System.out.print("Veículo mais novo: ");
@@ -163,7 +163,7 @@ public class principal {
                             System.out.print("Veículo mais antigo: ");
                             maisAntigo.mostrar();
                             System.out.print("Veículo com maior consumo de combustível: ");
-                            maiorConsumo.mostrar();;
+                            maiorConsumo.mostrar();
                             System.out.print("Veículo com menor consumo de combustível: ");
                             menorConsumo.mostrar();
                         }
@@ -200,22 +200,23 @@ public class principal {
                 }
             }catch(Exception numberFormatException){
                 System.out.println("Tipo de dado inválido inserido.");
+                opcao=-10;
                 ler.next();
             }
         } while (opcao != 0);
     }
     //4. Consultar Frota
     public static void listarPorData(List<Veiculo> frota){
+        System.out.println("\n## Ordem: Data de cadastramento ##");
         int c=1;
         for (Veiculo veiculo : frota) {
-            System.out.println("--- Ordem: Data de cadastramento ---");
             System.out.print(c+"º: ");
             veiculo.exibirDetalhes();
             c++;
         }
     }
     public static void listarPorTipo(List<Veiculo> frota){
-        System.out.println("--- Ordem: Tipo de veículo ---");
+        System.out.println("\n## Ordem: Tipo de veículo ##");
         for (Veiculo veiculo : frota) {
             if(veiculo.getClass().getSimpleName().startsWith("Caminhao"))
                 veiculo.exibirDetalhes();
@@ -230,7 +231,7 @@ public class principal {
         }
     }
     public static void listarPorAno(List<Veiculo> frota){
-        System.out.println("--- Ordem: Ano do veículo ---");
+        System.out.println("\n## Ordem: Ano do veículo ##");
         //Compara cada um dos itens da lista e os ordena por ano, por fim exibe os detalhes de cada veiculo na ordem
         frota.stream().sorted((v1, v2) -> Integer.compare(v1.getAno(), v2.getAno())).forEach(v->v.exibirDetalhes());
     }
