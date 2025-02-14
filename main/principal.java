@@ -16,7 +16,7 @@ public class principal {
     public static void menuDeCadastro(Scanner ler, List<Veiculo> frota){
         int opcao=0;
         do {
-            try{//Tratamento contra tipo de dado errado inserido, veiculos ja cadastrados não são perdidos
+            try{//Tratamento contra tipo de dado errado inserido, veiculos ja cadastrados não são perdidos ao reiniciar
                 System.out.println("\n--- Menu ---");
                 System.out.println("1. Cadastrar Carro");
                 System.out.println("2. Cadastrar Moto");

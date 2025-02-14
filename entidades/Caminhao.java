@@ -1,8 +1,8 @@
 package entidades;
  
 public class Caminhao extends Veiculo {
-    private double capacidadeCarga;
-    private double carga=0;
+    private double capacidadeCarga;//Espaço na carroceria
+    private double carga=0;//Carga que está na carroceria
 
     public Caminhao(String marca, String modelo, int ano, double quilometragem, double totalCombustivel, double capacidadeCarga) {
         super(marca, modelo, ano, quilometragem, totalCombustivel);
@@ -11,7 +11,7 @@ public class Caminhao extends Veiculo {
     
     @Override
     public double calcularConsumo() {
-        return quilometragem / totalCombustivel * (1 + (carga / 10000));
+        return quilometragem / totalCombustivel * (1 + (carga / 10000));//Consumo aumenta com mais carga
     }
     @Override
     public void cadastraViagem(double km) {

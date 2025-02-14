@@ -8,7 +8,7 @@ public abstract class Veiculo {
     private String modelo;
     private int ano;
     protected double quilometragem;
-    protected double totalCombustivel;
+    protected double totalCombustivel;//Todo o combustível ja abastecido neste tanque
     
     public Veiculo(String marca, String modelo, int ano, double quilometragem,double totalCombustivel) {
         this.marca = marca;
@@ -24,6 +24,7 @@ public abstract class Veiculo {
         System.out.println(this.getClass().getSimpleName()+" " + marca + " " + modelo);
     }
     public abstract void exibirDetalhes();
+
     public void trocarTanque(){
         totalCombustivel=0;
     }

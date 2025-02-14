@@ -13,11 +13,11 @@ public class Carro extends Veiculo {
 
     @Override
     public double calcularConsumo() {
-        return quilometragem/totalCombustivel*(passageiros * 0.1);
+        return quilometragem/totalCombustivel*(passageiros * 0.1);//Aumenta levemente o consumo com mais passageiros
     }
     @Override
     public void cadastraViagem(double km) {
-        receberPassageiros(1);
+        receberPassageiros(1);//Motorista precisa entrar antes de qualquer coisa
         System.out.print("Quantos passageiros irão junto?(sem contar o motorista) ");
         receberPassageiros(input.nextInt());
         System.out.println("Serão necessários "+calcularConsumo()+"L de gasolina.");
