@@ -3,6 +3,7 @@ package main;
 import entidades.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
  
 public class principal {
@@ -45,12 +46,13 @@ public class principal {
                         double totalCombustivel = ler.nextDouble();
                         ler.nextLine();
                         
-                        System.out.println("Tem ar-condicionado? (true/false): ");
-                        boolean temArCondicionado = ler.nextBoolean();
-                        
                         System.out.println("Qual a capacidade do tanque em Litros?");
                         double capacidadeTanque = ler.nextDouble();
                         ler.nextLine();
+                        
+                        System.out.println("Tem ar-condicionado? (true/false): ");
+                        boolean temArCondicionado = ler.nextBoolean();
+                        
                         
                         Carro carro = new Carro(marca, modelo, ano, quilometragem, totalCombustivel, temArCondicionado, capacidadeTanque);
                         frota.add(carro);
@@ -116,15 +118,31 @@ public class principal {
                             System.out.println("Nenhum veículo cadastrado.");
                         } else {
                             System.out.println(frota.size()+" Veículos cadastrados, sendo eles "+porcentagensFrota(frota));
-                            int c=1;
+                            
+                            System.out.println("--- Ordenar por: ---");
+                            System.out.println("1: Data"+
+                            "\n2: Tipo"+
+                            "\n3: Mais novo");
+                            int ordem = ler.nextInt();
+                            ler.nextLine();
+                            switch(ordem){
+                                case 1:
+                                    listarPorData(frota);
+                                    break;
+                                case 2:
+                                    listarPorTipo(frota);
+                                    break;
+                                case 3:
+                                    listarPorAno(frota);
+                                    break;
+                                default:
+                                    System.out.println("Opção inválida");
+                            }
+                            
                             Veiculo maiorQuilometragem=frota.get(0);
                             Veiculo maisNovo=frota.get(0), maisAntigo=frota.get(0);
                             Veiculo maiorConsumo=frota.get(0), menorConsumo=frota.get(0);
-
                             for (Veiculo veiculo : frota) {
-                                System.out.print(c+"º: ");
-                                veiculo.exibirDetalhes();
-                                c++;
                                 if(veiculo.getQuilometragem()>maiorQuilometragem.getQuilometragem())
                                     maiorQuilometragem = veiculo;
                                 if(veiculo.getAno()>maisNovo.getAno())
@@ -135,7 +153,6 @@ public class principal {
                                     maiorConsumo = veiculo;
                                 if(veiculo.calcularConsumo()<maiorConsumo.calcularConsumo())
                                     menorConsumo = veiculo;
-                                
                             }
                             System.out.println("--- dados adicionais da frota ---");
                             System.out.print("Veículo com maior quilometragem: ");
@@ -162,6 +179,31 @@ public class principal {
                 ler.next();
             }
         } while (opcao != 0);
+    }
+    public static void listarPorData(List<Veiculo> frota){
+        int c=1;
+        for (Veiculo veiculo : frota) {
+            System.out.print(c+"º: ");
+            veiculo.exibirDetalhes();
+            c++;
+        }
+    }
+    public static void listarPorTipo(List<Veiculo> frota){
+        for (Veiculo veiculo : frota) {
+            if(veiculo.getClass().getSimpleName().startsWith("Caminhao"))
+                veiculo.exibirDetalhes();
+        }
+        for (Veiculo veiculo : frota) {
+            if(veiculo.getClass().getSimpleName().startsWith("Carro"))
+                veiculo.exibirDetalhes();
+        }
+        for (Veiculo veiculo : frota) {
+            if(veiculo.getClass().getSimpleName().startsWith("Moto"))
+                veiculo.exibirDetalhes();
+        }
+    }
+    public static void listarPorAno(List<Veiculo> frota){
+        frota.stream().sorted((v1, v2) -> Integer.compare(v1.getAno(), v2.getAno())).forEach(v->v.exibirDetalhes());
     }
     public static String porcentagensFrota(List<Veiculo> frota){
         double caminhoes = frota.stream().filter(quant-> quant instanceof Caminhao).count();
