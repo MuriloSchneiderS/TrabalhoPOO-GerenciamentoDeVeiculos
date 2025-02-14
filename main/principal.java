@@ -40,7 +40,6 @@ public class principal {
                         break;
                     case 0:
                         System.out.println("Encerrando...");
-                        ler.nextLine();
                         break;
                     default:
                         System.out.println("Opção inválida");
@@ -55,7 +54,7 @@ public class principal {
     }
 
     public static void menuDeCadastro(Frota frota){
-        Scanner ler = new Scanner(System.in);
+        Scanner ler = new Scanner(System.in);//Se "ler.close()" o sistema encerra o System.in e quando vai usar outro scanner causa um erro.
         int opcao=0;
         do {
             try{/*Tratamento contra tipo de dado errado inserido, 
@@ -80,10 +79,10 @@ public class principal {
                     case 3://Cadastrar Caminhão
                         frota.cadastrarCaminhao();
                         break;
-                    case 4://Consultar Frota
+                    case 4://Consultar Frota com uma lista ordenada por data de cadastramento, tipo ou ano do veículo
                         frota.consultarFrota();
                         break;
-                    case 5:
+                    case 5://Pesquisar por marca, modelo ou ano
                         frota.pesquisar();
                         break;
                     case 0:

@@ -45,6 +45,7 @@ public class Frota {
             frota.add(carro);
             System.out.println("Carro cadastrado com sucesso!");
         } catch (Exception numberFormatException) {
+            System.out.println("Tipo de dado inválido inserido, Reiniciando...\n");
             ler.nextLine();
         }
     }
@@ -78,6 +79,7 @@ public class Frota {
             frota.add(moto);
             System.out.println("Moto cadastrada com sucesso!");
         } catch (Exception numberFormatException) {
+            System.out.println("Tipo de dado inválido inserido, Reiniciando...\n");
             ler.nextLine();
         }
     }
@@ -111,6 +113,7 @@ public class Frota {
             frota.add(caminhao);
             System.out.println("Caminhão cadastrado com sucesso!");
         } catch (Exception numberFormatException) {
+            System.out.println("Tipo de dado inválido inserido, Reiniciando...\n");
             ler.nextLine();
         }
     }
@@ -126,7 +129,7 @@ public class Frota {
             System.out.println("--- Ordenar por: ---");
             System.out.println("1: Data" +
                     "\n2: Tipo" +
-                    "\n3: Mais novo");
+                    "\n3: Ano");
             int ordem = ler.nextInt();
             ler.nextLine();
             switch (ordem) {
@@ -205,8 +208,8 @@ public class Frota {
     // 4. Formas de consultar Frota
     public static void listarPorData(List<Veiculo> frota) {
         int c = 1;
+        System.out.println("\n## Ordem: Data de cadastramento ##");
         for (Veiculo veiculo : frota) {
-            System.out.println("\n## Ordem: Data de cadastramento ##");
             System.out.print(c + "º: ");
             veiculo.exibirDetalhes();
             c++;
