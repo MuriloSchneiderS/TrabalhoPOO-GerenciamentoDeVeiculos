@@ -1,16 +1,16 @@
 package entidades;
  
 public class Carro extends Veiculo {
-    private boolean temArCondicionado;
+    protected boolean temArCondicionado;
     private double capacidadeTanque;
-    private int passageiros=1;
+    protected int passageiros=1;
 
     public Carro(String marca, String modelo, int ano, double quilometragem, double totalCombustivel, boolean temArCondicionado, double capacidadeTanque) {
         super(marca, modelo, ano, quilometragem, totalCombustivel);
         this.temArCondicionado = temArCondicionado;
         this.capacidadeTanque = capacidadeTanque;
     }
-
+    
     @Override
     public double calcularConsumo() {
         return quilometragem/totalCombustivel*(passageiros * 0.1);//Aumenta levemente o consumo com mais passageiros
