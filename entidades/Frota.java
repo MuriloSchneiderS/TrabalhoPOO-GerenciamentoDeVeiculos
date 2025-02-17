@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import entidades.Eletricos.CarroEletrico;
-
 public class Frota {
     public Frota() {
     }
@@ -43,6 +41,8 @@ public class Frota {
                 System.out.println("Qual o consumo elétrico (em kWh/100km)?");
                 consumo = ler.nextDouble();
                 ler.nextLine();
+
+                frota.add(new CarroEletrico(marca, modelo, ano, quilometragem, totalCombustivel, capacidadeTanque, temArCondicionado, consumo));
             }else{
                 System.out.println("Litros de combustivel ja abastecidos no tanque do veiculo: ");
                 totalCombustivel = ler.nextDouble();
@@ -51,14 +51,10 @@ public class Frota {
                 System.out.println("Capacidade do tanque em Litros: ");
                 capacidadeTanque = ler.nextDouble();
                 ler.nextLine();
+
+                frota.add(new Carro(marca, modelo, ano, quilometragem, totalCombustivel, capacidadeTanque, temArCondicionado));
             }
-            
-            Carro carro = new Carro(marca, modelo, ano, quilometragem, totalCombustivel, temArCondicionado, capacidadeTanque);
-            if(eletrico){
-                frota.add(new CarroEletrico(carro, consumo));
-            }else{
-                frota.add(carro);
-            }
+                                  
             System.out.println("Carro cadastrado com sucesso!");
         } catch (Exception numberFormatException) {
             System.out.println("Tipo de dado inválido inserido, Reiniciando...\n");
@@ -68,6 +64,10 @@ public class Frota {
     // 2. Cadastrar Moto
     public void cadastrarMoto() {
         try {
+            System.out.println("É Elétrica? (true/false)? ");
+            boolean eletrico = ler.nextBoolean();
+            ler.nextLine();
+
             System.out.println("Marca da moto: ");
             String marca = ler.next();
 
@@ -82,16 +82,29 @@ public class Frota {
             double quilometragem = ler.nextDouble();
             ler.nextLine();
 
-            System.out.println("Este tanque ja foi abastecido de quantos litros de combustivel?");
-            double totalCombustivel = ler.nextDouble();
-            ler.nextLine();
-
             System.out.println("Cilindradas da moto: ");
             int cilindradas = ler.nextInt();
             ler.nextLine();
+            
+            double consumo=0, totalCombustivel=0, capacidadeTanque=0;
+            if (eletrico) {
+                System.out.println("Qual o consumo elétrico (em kWh/100km)?");
+                consumo = ler.nextDouble();
+                ler.nextLine();
 
-            Moto moto = new Moto(marca, modelo, ano, quilometragem, totalCombustivel, cilindradas);
-            frota.add(moto);
+                frota.add(new MotoEletrica(marca, modelo,ano, quilometragem, totalCombustivel, capacidadeTanque, cilindradas, consumo));
+            }else{
+                System.out.println("Litros de combustivel ja abastecidos no tanque do veiculo: ");
+                totalCombustivel = ler.nextDouble();
+                ler.nextLine();
+                
+                System.out.println("Capacidade do tanque em Litros: ");
+                capacidadeTanque = ler.nextDouble();
+                ler.nextLine();
+
+                frota.add(new Moto(marca, modelo, ano, quilometragem, totalCombustivel, capacidadeTanque, cilindradas));
+            }
+                        
             System.out.println("Moto cadastrada com sucesso!");
         } catch (Exception numberFormatException) {
             System.out.println("Tipo de dado inválido inserido, Reiniciando...\n");
@@ -102,6 +115,10 @@ public class Frota {
     // 3. Cadastrar Caminhão
     public void cadastrarCaminhao() {
         try {
+            System.out.println("É Elétrico? (true/false)? ");
+            boolean eletrico = ler.nextBoolean();
+            ler.nextLine();
+
             System.out.println("Marca do caminhão: ");
             String marca = ler.next();
 
@@ -116,16 +133,25 @@ public class Frota {
             double quilometragem = ler.nextDouble();
             ler.nextLine();
 
-            System.out.println("Este tanque ja foi abastecido de quantos litros de combustivel?");
-            double totalCombustivel = ler.nextDouble();
-            ler.nextLine();
-
             System.out.println("Capacidade de carga (toneladas): ");
             double capacidadeCarga = ler.nextDouble();
             ler.nextLine();
 
-            Caminhao caminhao = new Caminhao(marca, modelo, ano, quilometragem, totalCombustivel, capacidadeCarga);
-            frota.add(caminhao);
+            double consumo=0, totalCombustivel=0;
+            if (eletrico) {
+                System.out.println("Qual o consumo elétrico (em kWh/100km)?");
+                consumo = ler.nextDouble();
+                ler.nextLine();
+
+                frota.add(new CaminhaoEletrico(marca, modelo, ano, quilometragem, totalCombustivel, capacidadeCarga, consumo));
+            }else{
+                System.out.println("Este tanque ja foi abastecido de quantos litros de combustivel?");
+                totalCombustivel = ler.nextDouble();
+                ler.nextLine();
+                
+                frota.add(new Caminhao(marca, modelo, ano, quilometragem, totalCombustivel, capacidadeCarga));
+            }
+
             System.out.println("Caminhão cadastrado com sucesso!");
         } catch (Exception numberFormatException) {
             System.out.println("Tipo de dado inválido inserido, Reiniciando...\n");

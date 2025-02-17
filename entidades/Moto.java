@@ -1,16 +1,16 @@
 package entidades;
  
 public class Moto extends Veiculo {
-    private int cilindradas;
-    private int capacidadeTanque;
-    private int combustivel=0;
+    protected double capacidadeTanque;
+    protected double cilindradas;
+    protected double combustivel=0;
 
-    public Moto(String marca, String modelo, int ano, double quilometragem, double totalCombustivel, int cilindradas) {
+    public Moto(String marca, String modelo, int ano, double quilometragem, double totalCombustivel, double capacidadeTanque, double cilindradas) {
         super(marca, modelo, ano, quilometragem, totalCombustivel);
+        this.capacidadeTanque = capacidadeTanque;
         this.cilindradas = cilindradas;
     }
 
-    @Override
     public double calcularConsumo() {
         return quilometragem*totalCombustivel*0.9;//Assumindo que motos têm um fator de consumo menor
     }
@@ -30,7 +30,7 @@ public class Moto extends Veiculo {
     @Override
     public void exibirDetalhes() {
         System.out.println("Moto"+
-        "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km"+"\n Total de combustivel abastecido: "+this.getTotalCombustivel()+"L");
+        "\n Marca: " +marca+"\n Modelo: " +modelo+"\n Ano: " +ano+"\n Quilometragem: " +quilometragem+"km"+"\n Total de combustivel abastecido: "+totalCombustivel+"L");
         System.out.println(" Cilindradas: " + cilindradas);
     }
 

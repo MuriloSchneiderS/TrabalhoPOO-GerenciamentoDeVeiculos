@@ -1,4 +1,4 @@
-package entidades.Eletricos;
+package entidades;
 
 public interface Eletricos {
     public void carregar(int carga);

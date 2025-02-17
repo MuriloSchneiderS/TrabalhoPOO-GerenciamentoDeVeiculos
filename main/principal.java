@@ -23,7 +23,7 @@ public class principal {
                 switch (opcao) {
                     case 1:
                         frotas.add(new Frota());
-                        menuDeCadastro(frotas.getLast());
+                        menuDeCadastro(frotas.getLast(), ler);
                         break;
                     case 2:
                         int c=1;
@@ -53,8 +53,8 @@ public class principal {
         ler.close();
     }
 
-    public static void menuDeCadastro(Frota frota){
-        Scanner ler = new Scanner(System.in);//Se "ler.close()" o sistema encerra o System.in e quando vai usar outro scanner causa um erro.
+    public static void menuDeCadastro(Frota frota, Scanner ler){
+        //Scanner ler = new Scanner(System.in);//Se "ler.close()" o sistema encerra o System.in e quando vai usar outro scanner causa um erro.
         int opcao=0;
         do {
             try{/*Tratamento contra tipo de dado errado inserido, 

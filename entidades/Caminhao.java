@@ -1,8 +1,8 @@
 package entidades;
  
 public class Caminhao extends Veiculo {
-    private double capacidadeCarga;//Espaço na carroceria
-    private double carga=0;//Carga que está na carroceria
+    protected double capacidadeCarga;//Espaço na carroceria
+    protected double carga=0;//Carga que está na carroceria
 
     public Caminhao(String marca, String modelo, int ano, double quilometragem, double totalCombustivel, double capacidadeCarga) {
         super(marca, modelo, ano, quilometragem, totalCombustivel);
@@ -36,8 +36,8 @@ public class Caminhao extends Veiculo {
     @Override
     public void exibirDetalhes() {
         System.out.println("Caminhão"+
-        "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km"+"\n Total de combustive abastecido: "+this.getTotalCombustivel()+"L");
-        System.out.println(" Capacidade de carga: " + this.getCapacidade() + "T");
+        "\n Marca: " +marca+"\n Modelo: " +modelo+"\n Ano: " +ano+"\n Quilometragem: " +quilometragem+"km"+"\n Total de combustive abastecido: "+totalCombustivel+"L");
+        System.out.println(" Capacidade de carga: " +capacidadeCarga+ "T");
     }
 
     public void abastecerCarroceria(double kg){
@@ -50,8 +50,5 @@ public class Caminhao extends Veiculo {
     }
     public void esvaziarCarroceria(){
         carga=0;
-    }
-    public double getCapacidade(){
-        return capacidadeCarga;
     }
 }
