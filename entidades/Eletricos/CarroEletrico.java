@@ -6,9 +6,8 @@ public class CarroEletrico extends Carro implements Eletricos {
     private double consumo;
     private boolean auto=false;
 
-    public CarroEletrico(String marca, String modelo, int ano, double quilometragem, double totalCombustivel,
-                        boolean temArCondicionado, double capacidadeTanque, double consumo) {
-        super(marca, modelo, ano, quilometragem, totalCombustivel, temArCondicionado, capacidadeTanque);
+    public CarroEletrico(Carro carro, double consumo){
+        super(carro.getMarca(), carro.getModelo(), carro.getAno(), carro.getQuilometragem(), carro.getTotalCombustivel(), carro.getTemArCondicionado(), carro.getCapacidadeTanque());
         this.consumo = consumo;
     }
     
@@ -36,8 +35,8 @@ public class CarroEletrico extends Carro implements Eletricos {
     @Override
     public void exibirDetalhes() {
         System.out.println("Carro elétrico "+
-        "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km"+"\n Ciclos de carregamento: "+this.getTotalCombustivel()+"L");
-        System.out.println("\n Tem ar-condicionado: " + (this.temArCondicionado ? "Sim. " : "Não. ")+
-        "\nBateria: "+bateria+"\nConsumo: "+consumo+"\nCusto por 100km: "+calcularConsumo());
+        "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km");
+        System.out.println(" Tem ar-condicionado: " + (this.getTemArCondicionado() ? "Sim. " : "Não. ")+
+        "\n Bateria: "+bateria+"\n Consumo: "+consumo+"\n Custo por 100km: "+calcularConsumo());
     }
 }

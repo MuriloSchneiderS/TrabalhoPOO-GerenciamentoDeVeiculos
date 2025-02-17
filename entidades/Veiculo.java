@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public abstract class Veiculo {
     protected Scanner input = new Scanner(System.in);
-    private String marca;
-    private String modelo;
-    private int ano;
+    protected String marca;
+    protected String modelo;
+    protected int ano;
     protected double quilometragem;
     protected double totalCombustivel;//Todo o combustível ja abastecido neste tanque
     

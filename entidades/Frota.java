@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import entidades.Eletricos.CarroEletrico;
+
 public class Frota {
     public Frota() {
     }
@@ -14,6 +16,14 @@ public class Frota {
     // 1. Cadastrar Carro
     public void cadastrarCarro() {
         try {
+            System.out.println("É Elétrico? (true/false)? ");
+            boolean eletrico = ler.nextBoolean();
+            ler.nextLine();
+
+            System.out.println("Tem ar-condicionado? (true/false): ");
+            boolean temArCondicionado = ler.nextBoolean();
+            ler.nextLine();
+
             System.out.println("Marca do carro: ");
             String marca = ler.next();
 
@@ -28,28 +38,33 @@ public class Frota {
             double quilometragem = ler.nextDouble();
             ler.nextLine();
 
-            System.out.println("Quantos litros de combustivel ja forma abastecidos no tanque do veiculo?");
-            double totalCombustivel = ler.nextDouble();
-            ler.nextLine();
-
-            System.out.println("Qual a capacidade do tanque em Litros?");
-            double capacidadeTanque = ler.nextDouble();
-            ler.nextLine();
-
-            System.out.println("Tem ar-condicionado? (true/false): ");
-            boolean temArCondicionado = ler.nextBoolean();
-            ler.nextLine();
-
-            Carro carro = new Carro(marca, modelo, ano, quilometragem, totalCombustivel, temArCondicionado,
-                    capacidadeTanque);
-            frota.add(carro);
+            double consumo=0, totalCombustivel=0, capacidadeTanque=0;
+            if (eletrico) {
+                System.out.println("Qual o consumo elétrico (em kWh/100km)?");
+                consumo = ler.nextDouble();
+                ler.nextLine();
+            }else{
+                System.out.println("Litros de combustivel ja abastecidos no tanque do veiculo: ");
+                totalCombustivel = ler.nextDouble();
+                ler.nextLine();
+                
+                System.out.println("Capacidade do tanque em Litros: ");
+                capacidadeTanque = ler.nextDouble();
+                ler.nextLine();
+            }
+            
+            Carro carro = new Carro(marca, modelo, ano, quilometragem, totalCombustivel, temArCondicionado, capacidadeTanque);
+            if(eletrico){
+                frota.add(new CarroEletrico(carro, consumo));
+            }else{
+                frota.add(carro);
+            }
             System.out.println("Carro cadastrado com sucesso!");
         } catch (Exception numberFormatException) {
             System.out.println("Tipo de dado inválido inserido, Reiniciando...\n");
             ler.nextLine();
         }
     }
-
     // 2. Cadastrar Moto
     public void cadastrarMoto() {
         try {

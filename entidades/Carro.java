@@ -1,14 +1,17 @@
 package entidades;
  
 public class Carro extends Veiculo {
-    protected boolean temArCondicionado;
+    private boolean temArCondicionado;
     private double capacidadeTanque;
-    protected int passageiros=1;
+    private int passageiros=1;
 
     public Carro(String marca, String modelo, int ano, double quilometragem, double totalCombustivel, boolean temArCondicionado, double capacidadeTanque) {
         super(marca, modelo, ano, quilometragem, totalCombustivel);
         this.temArCondicionado = temArCondicionado;
         this.capacidadeTanque = capacidadeTanque;
+    }
+    public Carro getCopy(){//copia de carro para transformar em um carro elétrico, para não precisar desprivar os atributos de Carro.
+        return new Carro(marca, modelo, passageiros, quilometragem, totalCombustivel, temArCondicionado, capacidadeTanque);
     }
     
     @Override
@@ -34,7 +37,7 @@ public class Carro extends Veiculo {
     public void exibirDetalhes() {
         System.out.println("Carro"+
         "\n Marca: " + this.getMarca()+"\n Modelo: " + this.getModelo()+"\n Ano: " + this.getAno()+"\n Quilometragem: " + this.getQuilometragem()+"km"+"\n Total de combustivel abastecido: "+this.getTotalCombustivel()+"L");
-        System.out.println(" Capacidade do Tanque: "+this.capacidadeTanque+"L.\n Tem ar-condicionado: " + (this.temArCondicionado ? "Sim. " : "Não. "));
+        System.out.println(" Capacidade do Tanque: "+this.capacidadeTanque+"L.\n Tem ar-condicionado: " + (this.temArCondicionado? "Sim. " : "Não. "));
     }
 
     public void receberPassageiros(int quant){
@@ -42,5 +45,12 @@ public class Carro extends Veiculo {
     }
     public void desembarcarPassageiros(int quant){
         passageiros-=quant;
+    }
+
+    public boolean getTemArCondicionado(){
+        return temArCondicionado;
+    }
+    public double getCapacidadeTanque(){
+        return capacidadeTanque;
     }
 }
