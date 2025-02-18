@@ -37,6 +37,6 @@ public class CarroEletrico extends Carro implements Eletricos {
         System.out.println("Carro elétrico "+
         "\n Marca: " +marca+"\n Modelo: " +modelo+"\n Ano: " +ano+"\n Quilometragem: " +quilometragem+"km");
         System.out.println(" Tem ar-condicionado: " + (temArCondicionado ? "Sim. " : "Não. ")+
-        "\n Carga da bateria: "+bateria+"\n Consumo: "+consumo+"\n Custo por 100km: "+calcularConsumo()+"R$/100km");
+        "\n Carga da bateria: "+bateria+"\n Consumo: "+consumo+"\n Consumo elétrico em R$/100km: "+calcularConsumo());
     }
 }

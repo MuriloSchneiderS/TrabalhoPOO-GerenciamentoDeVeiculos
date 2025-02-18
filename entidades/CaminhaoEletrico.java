@@ -34,6 +34,6 @@ public class CaminhaoEletrico extends Caminhao implements Eletricos {
         System.out.println("Caminhão elétrico"+
         "\n Marca: " +marca+"\n Modelo: " +modelo+"\n Ano: " +ano+"\n Quilometragem: " +quilometragem+"km"+"\n Total de combustive abastecido: "+totalCombustivel+"L");
         System.out.println(" Capacidade de carga: " +capacidadeCarga+ "T");
-        System.out.println("Consumo elétrico: "+calcularConsumo()+"R$/100km");
+        System.out.println(" Consumo elétrico em R$/100km: "+calcularConsumo());
     }
 }

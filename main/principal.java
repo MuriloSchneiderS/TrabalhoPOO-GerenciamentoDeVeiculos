@@ -18,8 +18,10 @@ public class principal {
                 System.out.println("1. Cadastrar nova frota"+
                 "\n2. consultar frotas"+
                 "\n0. Encerrar programa");
+                System.out.print("Escolha uma opção: ");
                 opcao=ler.nextInt();
                 ler.nextLine();
+                System.out.println();
                 switch (opcao) {
                     case 1:
                         frotas.add(new Frota());
@@ -30,8 +32,8 @@ public class principal {
                         if (frotas.isEmpty()) {
                             System.out.println("## Nenhuma frota cadastrada. ##\n");
                         }else{
+                            System.out.println("## "+frotas.size()+" frotas cadastradas ##");
                             for (Frota frota : frotas) {
-                                System.out.println("## "+frotas.size()+" frotas cadastradas ##");
                                 System.out.println(c + "º frota: ");
                                 c++;
                                 System.out.println(frota.resumo());
@@ -66,9 +68,10 @@ public class principal {
                 System.out.println("4. Consultar Frota");
                 System.out.println("5. Pesquisar");
                 System.out.println("0. Sair");
-                System.out.println("Escolha uma opção: ");
+                System.out.print("Escolha uma opção: ");
                 opcao = ler.nextInt();
                 ler.nextLine();
+                System.out.println();
                 switch (opcao) {
                     case 1://Cadastrar Carro
                         frota.cadastrarCarro();

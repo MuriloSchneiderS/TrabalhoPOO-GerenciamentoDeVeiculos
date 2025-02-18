@@ -111,7 +111,6 @@ public class Frota {
             ler.nextLine();
         }
     }
-
     // 3. Cadastrar Caminhão
     public void cadastrarCaminhao() {
         try {
@@ -167,12 +166,13 @@ public class Frota {
         } else {
             System.out.println(frota.size() + " Veículos cadastrados, sendo eles " + porcentagensFrota(frota));
 
-            System.out.println("--- Ordenar por: ---");
-            System.out.println("1: Data" +
+            System.out.println("--- Ordernar por: ");
+            System.out.println("1: Data de cadastramento" +
                     "\n2: Tipo" +
                     "\n3: Ano");
+            System.out.print(": ");
             int ordem = ler.nextInt();
-            ler.nextLine();
+            System.out.println("");
             switch (ordem) {
                 case 1:
                     listarPorData(frota);
@@ -219,21 +219,22 @@ public class Frota {
     // 5. Pesquisar
     public void pesquisar() {
         try {
-            System.out.println("--- Pesquisar ---");
+            System.out.println("--- Pesquisar por: ---");
             System.out.println("1. Por Marca" +
                     "\n2. Por Modelo" +
                     "\n3. Por ano");
+            System.out.print(": ");
             switch (ler.nextInt()) {
                 case 1:
-                    System.out.print("Digite a Marca: ");
+                    System.out.print("\nDigite a Marca: ");
                     pesquisarPorMarca(frota, ler.next()).forEach(v -> v.exibirDetalhes());
                     break;
                 case 2:
-                    System.out.print("Digite o Modelo: ");
+                    System.out.print("\nDigite o Modelo: ");
                     pesquisarPorModelo(frota, ler.next()).forEach(v -> v.exibirDetalhes());
                     break;
                 case 3:
-                    System.out.print("Digite o Ano: ");
+                    System.out.print("\nDigite o Ano: ");
                     pesquisarPorAno(frota, ler.nextInt()).forEach(v -> v.exibirDetalhes());
                     break;
                 default:
@@ -248,12 +249,9 @@ public class Frota {
 
     // 4. Formas de consultar Frota
     public static void listarPorData(List<Veiculo> frota) {
-        int c = 1;
         System.out.println("\n## Ordem: Data de cadastramento ##");
         for (Veiculo veiculo : frota) {
-            System.out.print(c + "º: ");
             veiculo.exibirDetalhes();
-            c++;
         }
     }
 

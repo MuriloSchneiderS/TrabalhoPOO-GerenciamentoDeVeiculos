@@ -34,6 +34,6 @@ public class MotoEletrica extends Moto implements Eletricos {
         System.out.println("Moto"+
         "\n Marca: " + marca+"\n Modelo: " +modelo+"\n Ano: " +ano+"\n Quilometragem: " +quilometragem+"km");
         System.out.println(" Cilindradas: " +cilindradas);
-        System.out.println(" Carga da bateria: "+bateria+"\n Consumo: "+calcularConsumo()+"R$/km");
+        System.out.println(" Carga da bateria: "+bateria+"\n Consumo elétrico em R$/km: "+calcularConsumo());
     }    
 }
